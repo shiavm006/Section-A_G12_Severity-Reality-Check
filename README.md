@@ -1,4 +1,4 @@
-# DeliverIQ — Severity Reality Check
+# Severity Reality Check
 
 > **Newton School of Technology | Data Visualization & Analytics**
 > Section-A · Team G12 · A 2-week industry-style capstone using Python, GitHub, and Tableau Public to disentangle **true accident severity** from congestion, time-of-day, and location bias in publicly available US road accident data.
