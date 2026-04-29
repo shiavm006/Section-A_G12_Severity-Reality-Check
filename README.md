@@ -17,7 +17,7 @@
 
 
 ```
-                                                                                                                                   
+                                                                                                                             
 ```
 
 ### Team Members
@@ -113,13 +113,13 @@ For full column definitions, derived features, and cleaning notes, see `[docs/da
 ### Dashboard 2 — When & Where Risk Actually Strikes (the diagnosis)
 
 
-| #   | KPI                      | Formula / Computation                                              |
-| --- | ------------------------ | ------------------------------------------------------------------ |
-| 6   | Worst Season             | Season with highest `{ FIXED [Season] : AVG([Severity]) }`         |
-| 7   | Peak Risk Hour           | Hour-of-day with highest `{ FIXED [Hour] : AVG([Severity]) }`      |
-| 8   | Top State by True Severe | State with highest `SUM([True Severe Count])`                      |
-| 9   | Weekend vs Weekday Δ     | `AVG(Severity | Weekend) − AVG(Severity | Weekday)` — signed delta |
-| 10  | Cities Tracked           | `COUNTD([City])` — coverage breadth marker                         |
+| #   | KPI                      | Formula / Computation                                         |
+| --- | ------------------------ | ------------------------------------------------------------- |
+| 6   | Worst Season             | Season with highest `{ FIXED [Season] : AVG([Severity]) }`    |
+| 7   | Peak Risk Hour           | Hour-of-day with highest `{ FIXED [Hour] : AVG([Severity]) }` |
+| 8   | Top State by True Severe | State with highest `SUM([True Severe Count])`                 |
+| 9   | Weekend vs Weekday Δ     | `AVG(Severity                                                 |
+| 10  | Cities Tracked           | `COUNTD([City])` — coverage breadth marker                    |
 
 
 ### Dashboard 3 — Conditions Behind Crashes (the cause)
