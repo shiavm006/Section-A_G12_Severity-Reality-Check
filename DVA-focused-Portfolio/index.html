@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Keshav Chhabra (Data-Portfolio)</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c2128;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #2f81f7;
+    --accent-bg: #1f6feb;
+    --chip: #21262d;
+    --tag-bg: rgba(56,139,253,0.15);
+    --tag-text: #79c0ff;
+    --green: #3fb950;
+    --yellow: #d4a72c;
+    --blue: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+  /* Sidebar */
+  .sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .avatar {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #222;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .name { font-size: 26px; font-weight: 600; margin: 8px 0 0; }
+  .username { color: var(--muted); font-size: 18px; margin: 0; }
+  .bio { color: var(--text); font-size: 15px; margin: 8px 0 4px; }
+  .follow-btn {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--chip);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .follow-btn:hover { background: #30363d; }
+  .info-list { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 8px; }
+  .info-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); }
+  .info-list svg { flex-shrink: 0; fill: var(--muted); }
+  .info-list a { color: var(--text); text-decoration: none; }
+  .info-list a:hover { color: var(--accent); }
+  .org-section { margin-top: 16px; }
+  .org-title { font-size: 14px; font-weight: 600; margin: 0 0 10px; }
+  .org-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .org-chip {
+    background: var(--chip);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  /* Main */
+  .main { min-width: 0; }
+  .tab-bar {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--accent-bg);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .tab .count {
+    background: var(--chip);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: var(--text);
+  }
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .search {
+    flex: 1;
+    min-width: 220px;
+    padding: 8px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 14px;
+  }
+  .search::placeholder { color: var(--muted); }
+  .filter-chip {
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-chip.active {
+    background: var(--accent-bg);
+    border-color: var(--accent-bg);
+    color: white;
+  }
+  .filter-chip:hover:not(.active) { background: var(--panel-2); }
+  /* Repo grid */
+  .repo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .repo-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .repo-card:hover { border-color: #58a6ff66; transform: translateY(-2px); }
+  .repo-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: #222;
+  }
+  .repo-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .repo-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .repo-title { display: flex; align-items: center; gap: 8px; color: var(--blue); font-weight: 600; font-size: 16px; text-decoration: none; }
+  .repo-title:hover { text-decoration: underline; }
+  .repo-title svg { fill: var(--muted); }
+  .visibility {
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1px 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .repo-desc { color: var(--muted); font-size: 14px; margin: 0; }
+  .repo-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+  .repo-meta { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; margin-top: auto; }
+  .lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    .avatar { width: 200px; height: 200px; margin: 0 auto; }
+    .repo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="avatar">
+        <img src="assets/profile.jpg" alt="Keshav Chhabra"
+             onerror="this.src='https://via.placeholder.com/260x260/161b22/8b949e?text=Add+Photo'" />
+      </div>
+      <h1 class="name">Keshav Chhabra</h1>
+      <p class="username">keshavvchhabra</p>
+      <p class="bio">Data Analyst turning complex datasets into clear, actionable insights. I build scalable models and dashboards.</p>
+      <a class="follow-btn" href="https://github.com/keshavvchhabra" target="_blank" rel="noopener">Follow</a>
+      <ul class="info-list">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0a5 5 0 0 0-5 5c0 4.5 5 11 5 11s5-6.5 5-11a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+          India
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M1.75 2h12.5c.97 0 1.75.78 1.75 1.75v8.5c0 .97-.78 1.75-1.75 1.75H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.78.78 2 1.75 2zm.75 2.5v7.75c0 .14.11.25.25.25h11.5a.25.25 0 0 0 .25-.25V4.5L8 9 2.5 4.5z"/></svg>
+          <a href="mailto:keshavchh99@gmail.com">keshavchh99@gmail.com</a>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4.75 1A1.75 1.75 0 0 0 3 2.75v10.5C3 14.216 3.784 15 4.75 15h6.5A1.75 1.75 0 0 0 13 13.25V2.75A1.75 1.75 0 0 0 11.25 1h-6.5zM8 13a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5z"/></svg>
+          +91 9910684589
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>
+          <a href="https://linkedin.com/in/keshavvchhabra" target="_blank" rel="noopener">linkedin.com/in/keshavvchhabra</a>
+        </li>
+      </ul>
+      <div class="org-section">
+        <h3 class="org-title">Organizations</h3>
+        <div class="org-chips">
+          <span class="org-chip">Excel</span>
+          <span class="org-chip">Looker Studio</span>
+          <span class="org-chip">Tableau</span>
+          <span class="org-chip">Python</span>
+          <span class="org-chip">SQL</span>
+          <span class="org-chip">Pandas</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="tab-bar">
+        <div class="tab">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8z"/></svg>
+          Repositories <span class="count">4</span>
+        </div>
+      </div>
+      <div class="filter-row">
+        <input class="search" type="text" placeholder="Find a repository..." id="searchInput" />
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="excel">Excel</button>
+        <button class="filter-chip" data-filter="looker">Looker Studio</button>
+        <button class="filter-chip" data-filter="python">Python</button>
+        <button class="filter-chip" data-filter="tableau">Tableau</button>
+      </div>
+
+      <div class="repo-grid" id="repoGrid">
+        <article class="repo-card" data-lang="tableau" data-name="us road accident dashboard">
+          <img class="repo-image" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=900&q=70" alt="US Road Accident Dashboard" />
+          <div class="repo-body">
+            <div class="repo-header">
+              <a class="repo-title" href="https://public.tableau.com/views/RoadAccidentDataofUSA_17773613139680/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5z"/></svg>
+                US Road Accident Dashboard
+              </a>
+              <span class="visibility">Public</span>
+            </div>
+            <p class="repo-desc">An interactive Tableau dashboard analyzing road accident data across the USA — exploring accident frequency, severity, casualties, and trends by state, time, weather, and road conditions to highlight high-risk patterns and inform safer-roads decisions.</p>
+            <div class="repo-tags">
+              <span class="tag">tableau</span>
+              <span class="tag">dashboard</span>
+              <span class="tag">road-safety</span>
+              <span class="tag">data-visualization</span>
+            </div>
+            <div class="repo-meta">
+              <span class="lang-dot" style="background:var(--yellow)"></span> Tableau
+            </div>
+          </div>
+        </article>
+
+        <article class="repo-card" data-lang="excel" data-name="delivery performance dashboard">
+          <img class="repo-image" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=70" alt="Delivery Performance" />
+          <div class="repo-body">
+            <div class="repo-header">
+              <a class="repo-title" href="https://docs.google.com/spreadsheets/d/1hOI7rUB05ancqKKBM7Kk_-6SlKks32fau-yoKpyPegU/edit?gid=1504644105" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5z"/></svg>
+                Delivery Performance Dashboard
+              </a>
+              <span class="visibility">Public</span>
+            </div>
+            <p class="repo-desc">Analyzed an e-commerce courier logistics dataset to track key delivery KPIs — total orders, average delivery time, average product rating, order share by courier, and top city delivery times — surfacing operational efficiency insights.</p>
+            <div class="repo-tags">
+              <span class="tag">excel</span>
+              <span class="tag">dashboard</span>
+              <span class="tag">logistics</span>
+              <span class="tag">data-analysis</span>
+            </div>
+            <div class="repo-meta">
+              <span class="lang-dot" style="background:var(--green)"></span> Excel
+            </div>
+          </div>
+        </article>
+
+        <article class="repo-card" data-lang="tableau" data-name="dva capstone executive overview">
+          <img class="repo-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=70" alt="DVA Capstone Executive Overview" />
+          <div class="repo-body">
+            <div class="repo-header">
+              <a class="repo-title" href="https://public.tableau.com/views/DvaCapstone2/ExecutiveOverview?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5z"/></svg>
+                DVA Capstone — Executive Overview
+              </a>
+              <span class="visibility">Public</span>
+            </div>
+            <p class="repo-desc">Capstone Tableau dashboard delivering an executive-level overview of business KPIs — turning raw data into a clear, decision-ready story for leadership with drill-downs across key performance metrics and trends.</p>
+            <div class="repo-tags">
+              <span class="tag">tableau</span>
+              <span class="tag">dashboard</span>
+              <span class="tag">capstone</span>
+              <span class="tag">data-visualization</span>
+            </div>
+            <div class="repo-meta">
+              <span class="lang-dot" style="background:var(--yellow)"></span> Tableau
+            </div>
+          </div>
+        </article>
+
+        <article class="repo-card" data-lang="tableau" data-name="dva project heatmap">
+          <img class="repo-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=70" alt="DVA Project Heatmap" />
+          <div class="repo-body">
+            <div class="repo-header">
+              <a class="repo-title" href="https://public.tableau.com/app/profile/keshav.chhabra1780/viz/Dva_Project/Heatmap?publish=yes" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5z"/></svg>
+                DVA Project — Heatmap
+              </a>
+              <span class="visibility">Public</span>
+            </div>
+            <p class="repo-desc">An interactive Tableau heatmap visualizing data density and patterns across multiple dimensions — surfacing concentration, hotspots, and category-level comparisons at a glance to drive faster decision-making.</p>
+            <div class="repo-tags">
+              <span class="tag">tableau</span>
+              <span class="tag">heatmap</span>
+              <span class="tag">data-visualization</span>
+              <span class="tag">dashboard</span>
+            </div>
+            <div class="repo-meta">
+              <span class="lang-dot" style="background:var(--yellow)"></span> Tableau
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+<script>
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.repo-card');
+  const search = document.getElementById('searchInput');
+  let currentFilter = 'all';
+
+  function applyFilters() {
+    const q = search.value.trim().toLowerCase();
+    cards.forEach(card => {
+      const lang = card.dataset.lang;
+      const name = card.dataset.name;
+      const matchFilter = currentFilter === 'all' || lang === currentFilter;
+      const matchSearch = !q || name.includes(q);
+      card.style.display = (matchFilter && matchSearch) ? '' : 'none';
+    });
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentFilter = chip.dataset.filter;
+      applyFilters();
+    });
+  });
+  search.addEventListener('input', applyFilters);
+</script>
+</body>
+</html>
