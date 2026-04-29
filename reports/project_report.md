@@ -1,8 +1,8 @@
 ---
 
-title: "Severity Reality Check"
+title: "DeliverIQ — Severity Reality Check"
 subtitle: "Disentangling True Accident Severity from Congestion, Time-of-Day, and Location Bias"
-author: "Newton School of Technology · Data Visualization & Analytics Capstone 2"
+author: "Newton School of Technology · DVA Capstone 2 · Section-A Team G12"
 date: "April 2026"
 geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 fontsize: 11pt
@@ -18,30 +18,28 @@ numbersections: true
 
 # 1. Cover Page
 
-
-| Field                 | Detail                                                    |
-| --------------------- | --------------------------------------------------------- |
-| **Project Title**     | Severity Reality Check                                    |
-| **Subtitle**          | Disentangling True Accident Severity from Congestion Bias |
-| **Sector**            | Transportation & Public Safety                            |
-| **Team ID**           | *Fill team ID*                                            |
-| **Section**           | *Fill section*                                            |
-| **Faculty Mentor**    | *Fill mentor name*                                        |
-| **Institute**         | Newton School of Technology                               |
-| **GitHub Repository** | *Paste public GitHub URL*                                 |
-| **Tableau Dashboard** | *Paste Tableau Public URL*                                |
-| **Submission Date**   | April 29, 2026                                            |
-
+| Field                 | Detail                                                                  |
+| --------------------- | ----------------------------------------------------------------------- |
+| **Project Codename**  | DeliverIQ                                                               |
+| **Project Title**     | Severity Reality Check                                                  |
+| **Subtitle**          | Disentangling True Accident Severity from Congestion Bias               |
+| **Sector**            | Transportation & Public Safety                                          |
+| **Section**           | A                                                                       |
+| **Team ID**           | G12                                                                     |
+| **Faculty Mentor**    | *Fill mentor name*                                                      |
+| **Institute**         | Newton School of Technology                                             |
+| **GitHub Repository** | <https://github.com/shiavm006/Section-A_G12_DeliverIQ>                  |
+| **Tableau Dashboard** | <https://public.tableau.com/views/RoadAccidentDataofUSA_17773613139680/Dashboard1> |
+| **Submission Date**   | April 29, 2026                                                          |
 
 **Team Members**
 
-- Shivam Mittal -- Project Lead
-- Satyam -- Data Lead
-- *Member 3* -- ETL Lead
-- *Member 4* -- Analysis Lead
-- *Member 5* -- Visualization Lead
-- *Member 6* -- Strategy Lead
-- *Member 7* -- PPT & Quality Lead
+- Shivam Mittal — Project Lead    (shivam.mittal2024@nst.rishihood.edu.in)
+- Satyam Kumar — Data Lead    (satyam.kumar2024@nst.rishihood.edu.in)
+- Keshav — ETL Lead    (keshav.2024@nst.rishihood.edu.in)
+- Mohit Singh — Analysis Lead    (mohit.singh2024@nst.rishihood.edu.in)
+- Prachee Dhar — Visualization Lead    (prachee.dhar2024@nst.rishihood.edu.in)
+- Rishita Boisnobi — Strategy + PPT & Quality Lead    (rishita.boisnobi2024@nst.rishihood.edu.in)
 
 # 2. Executive Summary
 
@@ -363,52 +361,52 @@ Statistical testing is documented in `notebooks/04_statistical_analysis.ipynb`. 
 
 # 10. Tableau Dashboard Design
 
-The dashboard set is published on Tableau Public at *(URL pending republish -- see `tableau/dashboard_links.md`)*. The workbook file is `tableau/Road Accident Data of USA.twbx`.
+The dashboard set is published on Tableau Public at <https://public.tableau.com/views/RoadAccidentDataofUSA_17773613139680/Dashboard1>. The workbook file is `tableau/Road Accident Data of USA.twbx`.
 
 ## 10.1 Architecture
 
-Three dashboards form a **What → When/Where → Why** narrative arc:
+Three dashboards form a **What -> When -> Where & Why** narrative arc:
 
 1. **Dashboard 1 -- Severity Reality Check** *(executive view)*: establishes the bias and quantifies it
-2. **Dashboard 2 -- When & Where Risk Actually Strikes** *(operational drill-down, temporal/geographic)*
-3. **Dashboard 3 -- Conditions Behind Crashes** *(operational drill-down, environmental/infrastructure)*
+2. **Dashboard 2 -- When Risk Actually Strikes** *(operational drill-down, temporal/weather)*
+3. **Dashboard 3 -- Where & Why** *(operational drill-down, geography & infrastructure)*
 
-Each dashboard is a 1280 x 800 canvas with a top-row KPI strip (5 cards) and a 2 x 2 grid of charts beneath. Filters apply across all sheets via "All Using This Data Source."
+Each dashboard has a top-row KPI strip (5 cards) and a 2 x 2 grid of charts beneath. Filters apply across all sheets via "All Using This Data Source."
 
 ## 10.2 Dashboard 1 -- Severity Reality Check
 
-KPI strip -- Total Accidents · Nominal Severe · True Severe · True Severe % · Avg Severe Duration.
+KPI strip: Total Incidents (95,607) · Critical Accidents (18,023) · True Severe Accidents (9,155) · Avg Duration Severe (1,829 m) · Severe Distance (24,415 mi).
 
-Charts -- Severity Donut · Nominal vs True Severe Bar · Rush Hour Comparison · Hourly Severity Trend.
+Charts: Severity Donut · Severity Impact bar · Rush Hour Analysis · Hourly Trend · Weekend Analysis. Filters: Rush Hour, Severity.
 
-Filters -- Severity, State, Year.
+![Dashboard 1 -- Severity Reality Check](../tableau/screenshots/dashboard_1.png)
 
-## 10.3 Dashboard 2 -- When & Where
+## 10.3 Dashboard 2 -- When Risk Actually Strikes
 
-KPI strip -- Worst Season · Peak Risk Hour · Top State by True Severe · Weekend vs Weekday Δ · Cities Tracked.
+KPI strip: Worst Season (Winter) · Peak Risk Hour (12 AM) · Weekend vs Weekday Δ (+0.34) · Night Sev 3+ Share (8.42%) · Riskiest Weather (Drifting Snow / Windy).
 
-Charts -- Day x Hour Heatmap · Top 12 States by True Severe · Time-of-Day Severity Bar · Region Comparison.
+Charts: 24-Hour Severity Clock · Day vs Time Heatmap · Weather Severity · Temperature vs Severity by Season · Visibility vs Severity. Filters: Visibility Bucket, Time of Day.
 
-Filters -- Time_of_Day, State_Region, Season.
+![Dashboard 2 -- When Risk Actually Strikes](../tableau/screenshots/dashboard_2.png)
 
-## 10.4 Dashboard 3 -- Conditions
+## 10.4 Dashboard 3 -- Where & Why
 
-KPI strip -- Riskiest Weather · Junction Lift · Signal Drop · Avg Visibility During Severe · Night Severe Share.
+KPI strip: Top State by Volume (CA, 8,780) · Top State by Severity (WV) · Junction Severity (+28.8%) · Signal Drop (-62.1%) · Cities Tracked (5,558).
 
-Charts -- Weather x Severity · Visibility Bucket x Severity · Road Feature Lifts · Temperature x Severity by Season.
+Charts: Top 12 States bubble chart · Road Feature Impact · Top 8 Cities · More Features != More Danger. Filters: Severity slider.
 
-Filters -- Weather_Category, Visibility Bucket, Season.
+![Dashboard 3 -- Where & Why](../tableau/screenshots/dashboard_3.png)
 
 ## 10.5 Calculated Fields
 
-The workbook's signature calculated fields (also documented in the data dictionary):
+The workbook's signature calculated fields:
 
 - `Is True Severe` = `[Severity] = 4 AND [Distance_mi] >= 0.5`
 - `True Severe Count` = `IF [Is True Severe] THEN 1 ELSE 0 END`
 - `Junction Lift` = `{ FIXED : AVG(IF [Junction] = 1 THEN [Severity] END) } - { FIXED : AVG([Severity]) }`
-- `Signal Lift` = analogous form for `[Traffic_Signal]`
+- `Signal Drop` = `{ FIXED : AVG(IF [Traffic_Signal]=0 THEN [Severity] END) } - { FIXED : AVG(IF [Traffic_Signal]=1 THEN [Severity] END) }`
 - `Visibility Bucket` = a four-way bucketing of `[Visibility_mi]` (`<1 mi` / `1-3 mi` / `3-5 mi` / `5+ mi`)
-- LOD-based KPIs for Worst Season, Peak Risk Hour, Riskiest Weather (each uses `{ FIXED [dim] : AVG([Severity]) }` compared to the global maximum)
+- LOD-based KPIs for Worst Season, Peak Risk Hour, Riskiest Weather
 
 \newpage
 
@@ -520,26 +518,24 @@ Exact statistic values and full contingency tables are in `notebooks/04_statisti
 
 # 18. Contribution Matrix
 
-The matrix below documents each member's contribution across all project phases. Claims must match evidence in GitHub Insights, PR history, and committed files. Mismatches may result in individual grade adjustments.
+The matrix below documents each member's contribution across all project phases. Claims must match evidence in GitHub Insights, PR history, and committed files.
 
+| Team Member        | Dataset & Sourcing | ETL & Cleaning   | EDA & Analysis   | Statistical Analysis | Tableau Dashboard | Report Writing   | PPT & Viva       |
+| ------------------ | ------------------ | ---------------- | ---------------- | -------------------- | ----------------- | ---------------- | ---------------- |
+| Shivam Mittal      | Owner              | Owner            | Support          | Support              | Owner             | Owner            | Owner            |
+| Satyam Kumar       | Owner              | Support          | Support          | Owner                | Support           | Support          | Support          |
+| Keshav             | Support            | Owner            | Support          | Support              | Support           | Support          | Support          |
+| Mohit Singh        | Support            | Support          | Owner            | Owner                | Support           | Support          | Support          |
+| Prachee Dhar       | Support            | Support          | Support          | Support              | Owner             | Support          | Support          |
+| Rishita Boisnobi   | Support            | Support          | Support          | Support              | Support           | Owner            | Owner            |
 
-| Team Member   | Dataset & Sourcing | ETL & Cleaning  | EDA & Analysis  | Statistical Analysis | Tableau Dashboard | Report Writing  | PPT & Viva      |
-| ------------- | ------------------ | --------------- | --------------- | -------------------- | ----------------- | --------------- | --------------- |
-| Shivam Mittal | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
-| Satyam        | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
-| *Member 3*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
-| *Member 4*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
-| *Member 5*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
-| *Member 6*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
-
-
-> Replace each cell with **Owner** or **Support** based on actual contribution. Replace italicised placeholders with team member names. The matrix must align with GitHub Insights / PR history.
+> Adjust each cell to match actual GitHub commit / PR history before final submission.
 
 **Declaration:** We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts.
 
-**Team Lead Name:** _____________________________
+**Team Lead:** Shivam Mittal
 
-**Date:** _______________
+**Date:** April 29, 2026
 
 ---
 
