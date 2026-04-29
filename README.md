@@ -25,11 +25,11 @@
 
 | Role                 | Name   | GitHub Username |
 | -------------------- | ------ | --------------- |
-| Project Lead         | *Name* | `github-handle` |
+| Project Lead         | *Shivam Mittal* | `https://github.com/shiavm006` |
 | Data Lead            | *Name* | `github-handle` |
 | ETL Lead             | *Name* | `github-handle` |
 | Analysis Lead        | *Name* | `github-handle` |
-| Visualization Lead   | *Name* | `github-handle` |
+| Visualization Lead   | *Satyam Kumar* | `https://github.com/SatyamKumarCS` |
 | Strategy Lead        | *Name* | `github-handle` |
 | PPT and Quality Lead | *Name* | `github-handle` |
 
@@ -142,10 +142,10 @@ KPI computation logic is documented in `notebooks/04_statistical_analysis.ipynb`
 
 | Item                 | Details                                    |
 | -------------------- | ------------------------------------------ |
-| **Dashboard URL**    | *Paste Tableau Public link here*           |
-| **Executive View**   | *Describe the high-level KPI summary view* |
-| **Operational View** | *Describe the detailed drill-down view*    |
-| **Main Filters**     | *List the interactive filters used*        |
+| **Dashboard URL**    | [Road Accident Data of USA Dashboard](https://public.tableau.com/views/RoadAccidentDataofUSA_17773613139680/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) |
+| **Executive View**   | A high-level summary of accident trends, severity distribution (Low to Critical), and geographic heatmaps by State and Region to identify macro-level safety risks. |
+| **Operational View** | A granular drill-down into contributing factors including weather impact, road features (e.g., Traffic Signals, Junctions), and congestion bias analysis comparing rush hour vs. non-rush hour severity. |
+| **Main Filters**     | State, Severity Level, Year, Weather Category, Time of Day, and Rush Hour Toggle. |
 
 
 Store dashboard screenshots in `[tableau/screenshots/](tableau/screenshots/)` and document the public links in `[tableau/dashboard_links.md](tableau/dashboard_links.md)`.
