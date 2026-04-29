@@ -23,17 +23,16 @@
 ### Team Members
 
 
-| Role               | Name          | GitHub Username                |
-| ------------------ | ------------- | ------------------------------ |
-| Project Lead       | Shivam Mittal | `https://github.com/shiavm006` |
-| Data Lead          | Satyam        | `satyam-handle`                |
-| ETL Lead           | *Member 3*    | `github-handle`                |
-| Analysis Lead      | *Member 4*    | `github-handle`                |
-| Visualization Lead | *Member 5*    | `github-handle`                |
-| Strategy Lead      | *Member 6*    | `github-handle`                |
+| Role                 | Name   | GitHub Username |
+| -------------------- | ------ | --------------- |
+| Project Lead         | *Shivam Mittal* | `https://github.com/shiavm006` |
+| Data Lead            | *Name* | `github-handle` |
+| ETL Lead             | *Name* | `github-handle` |
+| Analysis Lead        | *Name* | `github-handle` |
+| Visualization Lead   | *Satyam Kumar* | `https://github.com/SatyamKumarCS` |
+| Strategy Lead        | *Name* | `github-handle` |
+| PPT and Quality Lead | *Name* | `github-handle` |
 
-
-> Replace the *italicized* placeholders with actual team member names + GitHub handles before submission.
 
 ---
 
@@ -141,27 +140,15 @@ KPI computation logic is documented in `notebooks/04_statistical_analysis.ipynb`
 ## Tableau Dashboard
 
 
-| Item                | Details                                                                                                 |
-| ------------------- | ------------------------------------------------------------------------------------------------------- |
-| **Dashboard URL**   | *Paste new Tableau Public URL here after republish — replaces the link in `tableau/dashboard_links.md`* |
-| **Workbook File**   | `tableau/Road Accident Data of USA.twbx`                                                                |
-| **Number of Views** | 3 dashboards (Severity Reality Check / When & Where / Conditions Behind Crashes)                        |
-| **Worksheet Count** | 30+ (15 KPI cards + 12 chart sheets)                                                                    |
+| Item                 | Details                                    |
+| -------------------- | ------------------------------------------ |
+| **Dashboard URL**    | [Road Accident Data of USA Dashboard](https://public.tableau.com/views/RoadAccidentDataofUSA_17773613139680/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) |
+| **Executive View**   | A high-level summary of accident trends, severity distribution (Low to Critical), and geographic heatmaps by State and Region to identify macro-level safety risks. |
+| **Operational View** | A granular drill-down into contributing factors including weather impact, road features (e.g., Traffic Signals, Junctions), and congestion bias analysis comparing rush hour vs. non-rush hour severity. |
+| **Main Filters**     | State, Severity Level, Year, Weather Category, Time of Day, and Rush Hour Toggle. |
 
 
-### Dashboard 1 — Severity Reality Check (Executive view)
-
-KPI strip: Total Accidents · Nominal Severe · True Severe · True Severe % · Avg Severe Duration. Visuals: Severity Donut, Nominal vs True Severe bar comparison, Rush Hour Comparison, Hourly Severity Trend. **Filters:** Severity, State, Year.
-
-### Dashboard 2 — When & Where Risk Actually Strikes (Operational view, temporal/geographic drill-down)
-
-KPI strip: Worst Season · Peak Risk Hour · Top State by True Severe · Weekend vs Weekday Δ · Cities Tracked. Visuals: Day × Hour Heatmap, Top 12 States by True Severe, Time-of-Day Severity Bar, Region Comparison. **Filters:** Time_of_Day, State_Region, Season.
-
-### Dashboard 3 — Conditions Behind Crashes (Operational view, environmental/infrastructure drill-down)
-
-KPI strip: Riskiest Weather · Junction Lift · Signal Drop · Avg Visibility During Severe · Night Severe Share. Visuals: Weather × Severity, Visibility Bucket × Severity, Road Feature Lifts, Temperature × Severity by Season. **Filters:** Weather_Category, Visibility Bucket, Season.
-
-Dashboard screenshots are stored in `[tableau/screenshots/](tableau/screenshots/)` and public URLs in `[tableau/dashboard_links.md](tableau/dashboard_links.md)`.
+Store dashboard screenshots in `[tableau/screenshots/](tableau/screenshots/)` and document the public links in `[tableau/dashboard_links.md](tableau/dashboard_links.md)`.
 
 ---
 
@@ -326,8 +313,8 @@ This table must match evidence in GitHub Insights, PR history, and committed fil
 
 | Team Member   | Dataset & Sourcing | ETL & Cleaning  | EDA & Analysis  | Statistical Analysis | Tableau Dashboard | Report Writing  | PPT & Viva      |
 | ------------- | ------------------ | --------------- | --------------- | -------------------- | ----------------- | --------------- | --------------- |
-| Shivam Mittal | Owner              |                 | support         | support              | support           | Owner           | Owner           |
-| Satyam        | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
+| Shivam Mittal | Owner              |                 | Support         | Support              | Support           | Owner           | Owner           |
+| Satyam Kumar  | Owner              | Support         | Support         | Support              | Owner             |                 |                 |
 | *Member 3*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
 | *Member 4*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
 | *Member 5*    | Owner / support    | Owner / support | Owner / support | Owner / support      | Owner / support   | Owner / support | Owner / support |
